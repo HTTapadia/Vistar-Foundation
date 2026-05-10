@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Donate — Vistar Foundation</title>
+
+  <!-- Fonts & Bootstrap (match main) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --page-bg: #FFFAED;
+      --panel-bg: #ffffff;
+      --panel-elev: 0 18px 40px rgba(2,6,23,0.06);
+      --text-dark: #071428;
+      --muted: #4b5563;
+      --accent: #ff8400;
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: var(--page-bg);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+      padding: 2.5rem 1rem;
+    }
+
+    /* full-page floral background, same opacity/filter as contact/index */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('flowers.jpg'); /* adjust to assets/flowers.jpg if needed */
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.12;
+      filter: blur(0.6px) saturate(1.05) grayscale(.08);
+      pointer-events: none;
+      user-select: none;
+      z-index: -1;
+    }
+
+    .panel {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--panel-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--panel-elev);
+      padding: 2rem;
+      color: var(--text-dark);
+    }
+
+    header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+    a.back { color:var(--text-dark); text-decoration:none; font-weight:600; }
+    a.back:hover { color: var(--accent); }
+
+    h1 { margin:0 0 .25rem; font-weight:700; }
+    .muted { color: var(--muted); }
+
+    .card {
+      border-radius: 12px;
+      padding: 1.25rem;
+      background: #fff;
+      border: 1px solid rgba(15,23,42,0.06);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.04);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border: none;
+      color: #021124;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(79,156,255,0.06);
+    }
+
+    footer { text-align:center; margin-top:1rem; color:var(--muted); font-size:.9rem; }
+    @media (max-width: 576px) { .panel { padding: 1rem; } }
+  </style>
+</head>
+<body>
+  <main class="panel" role="main" aria-labelledby="donate-heading">
+    <header>
+      <a href="index.html" class="back" aria-label="Back to home">← Home</a>
+      <div class="text-end muted" style="font-size:.95rem">Vistar Foundation</div>
+    </header>
+
+    <h1 id="donate-heading">Donate</h1>
+    <p class="muted">Your help is a vital part of our mission, and we accept any donations!</p>
+
+    <div class="card mt-3">
+      <h5>Give securely</h5>
+      <p class="muted">We accept card payments, bank transfers and in-kind support. We are grateful for every contribution, big and small.
+      <div class="row g-3 mt-2">
+        <div class="col-md-6">
+          <label class="form-label visually-hidden" for="amount">Amount</label>
+          <input id="amount" class="form-control" placeholder="Amount" type="number" min="1" required>
+        </div>
+
+        <div class="col-12 d-flex gap-2 mt-2">
+          <button id="payCard" class="btn btn-primary">Donate</button>
+          <button id="bankInfo" class="btn btn-outline-secondary" style="border-color:rgba(15,23,42,0.06);">Bank transfer info</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="mt-4">
+      <h6>Other ways to help</h6>
+      <p class="muted">Volunteer, partner or donate materials. <a href="help-out.html">Learn more</a></p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Vistar Foundation
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // placeholder handlers — replace with real payment flows
+    document.getElementById('payCard')?.addEventListener('click', function(){
+      alert('Integrate your Stripe/PayPal checkout here.');
+    });
+    document.getElementById('bankInfo')?.addEventListener('click', function(){
+      alert('Bank transfer details: Account name: Vistar Foundation — Account number: XXXX — Bank: YYYY');
+    });
+  </script>
+</body>
+</html>

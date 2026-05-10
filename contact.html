@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Vistar Foundation</title>
+
+  <!-- Fonts & Bootstrap (match main) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --page-bg: #FFFAED;        /* same warm canvas as index */
+      --panel-bg: #ffffff;       /* white container */
+      --panel-elev: 0 18px 40px rgba(2,6,23,0.06);
+      --text-dark: #071428;
+      --muted: #4b5563;
+      --accent: #ff8400;
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    /* full page background + floral decorative layer */
+    body{
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background-color: var(--page-bg);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+      padding: 2.5rem 1rem;
+    }
+
+    /* decorative full-page floral image (behind everything) */
+    body::before{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url('flowers.jpg'); /* update path if needed (assets/flowers.jpg) */
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      opacity: 0.12;                /* same subtle visibility as index */
+      filter: blur(0.6px) saturate(1.05) grayscale(.08);
+      pointer-events: none;
+      user-select: none;
+      z-index: -1;
+    }
+
+    /* central white panel that sits above the floral background */
+    .panel {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--panel-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--panel-elev);
+      padding: 2rem;
+      color: var(--text-dark);
+    }
+
+    header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+    a.back { color:var(--text-dark); text-decoration:none; font-weight:600; }
+    a.back:hover { color: var(--accent); }
+
+    h1 { margin:0 0 .25rem; font-weight:700; }
+    .muted { color: var(--muted); }
+
+    .form-control { background: #fff; border:1px solid rgba(15,23,42,0.06); color:var(--text-dark); box-shadow:none; }
+    .form-control:focus { box-shadow: 0 6px 20px rgba(79,156,255,0.06); border-color: rgba(79,156,255,0.18); }
+
+    .btn-primary {
+      background: var(--accent);
+      border: none;
+      color: #021124;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(79,156,255,0.08);
+    }
+
+    footer { text-align:center; margin-top:1rem; color:var(--muted); font-size:.9rem; }
+    @media (max-width: 576px) {
+      .panel { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="panel" role="main" aria-labelledby="contact-heading">
+    <header>
+      <a href="index.html" class="back" aria-label="Back to home">← Home</a>
+      <div class="text-end muted" style="font-size:.95rem">Vistar Foundation</div>
+    </header>
+
+    <h1 id="contact-heading">Volunteer!</h1>
+    <p class="muted">Include your name, age, and we will get back to you!</p>
+
+    <form id="contactForm" class="mt-3" onsubmit="event.preventDefault(); alert('Message sent — thank you!');">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label visually-hidden" for="name">Name</label>
+          <input id="name" class="form-control" placeholder="Full name" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label visually-hidden" for="email">Email</label>
+          <input id="email" type="email" class="form-control" placeholder="you@example.org" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label visually-hidden" for="message">Message</label>
+          <textarea id="message" class="form-control" rows="5" placeholder="Additional info" required></textarea>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </form>
+
+    <section class="mt-4">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="muted">info@vistar.org · +1 (555) 123-4567</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <strong>Follow</strong>
+          <div class="mt-2">
+            <a href="#" aria-label="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Vistar Foundation
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
