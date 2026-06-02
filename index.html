@@ -34,7 +34,7 @@
             -moz-osx-font-smoothing:grayscale;
             min-height:100vh;
         }
-        .container-lg { max-width:1100px; }
+        .container-lg { max-width:1280px; }
 
         .randomahh {
             color:black;
@@ -50,7 +50,15 @@
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
         .brand {
-            display:flex;align-items:center;gap:.6rem;font-weight:700;color:#fff;
+            display:flex;
+            align-items:center;
+            gap:.6rem;
+            font-weight:800;
+            color:#fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            letter-spacing: .02em;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.18);
         }
         .brand .logo {
             width:40px;height:40px;border-radius:10px;
@@ -63,7 +71,7 @@
         .hero{
           position: relative;
           overflow: hidden;
-          padding:6.5rem 0 4rem;
+          padding:6.5rem 0 2rem;
           background: linear-gradient(180deg, rgba(79,156,255,0.04), transparent 40%);
         }
 
@@ -88,6 +96,30 @@
 
         .hero .title { font-size:clamp(1.6rem, 3.6vw, 2.6rem); line-height:1.08; font-weight:700; }
         .hero .subtitle { color:var(--muted); margin-top:.6rem; max-width:58ch; }
+        .hero-cta { margin-top: 1.6rem; }
+        .hero-grid { display:flex; align-items:stretch; }
+        .hero-highlight {
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.15rem;
+            box-shadow: 0 14px 32px rgba(2,6,23,0.35);
+            height: 100%;
+        }
+        .hero-stats {
+            display:grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .75rem;
+            margin-top: .75rem;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: .85rem;
+        }
+        .hero-stat strong { display:block; font-size: 1.15rem; color: #fff; }
+        .hero-stat span { color: #dbe6f7; font-size: .95rem; }
 
         /* Cards / sections */
         .card-soft {
@@ -110,6 +142,139 @@
         }
         .btn-ghost {
             background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);
+        }
+
+        .menu-fab {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 14px 30px rgba(15, 23, 35, 0.28);
+            backdrop-filter: blur(8px);
+            transition: transform .25s ease, background .25s ease, opacity .25s ease;
+        }
+        .menu-fab:hover,
+        .menu-fab:focus-visible {
+            background: rgba(255,255,255,0.18);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2050;
+            display: flex;
+            justify-content: flex-end;
+            background: rgba(1, 4, 97, 0.35);
+            backdrop-filter: blur(14px) saturate(1);
+            -webkit-backdrop-filter: blur(14px) saturate(1);
+            opacity: 1;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .35s ease, visibility .35s ease;
+        }
+        .menu-overlay::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('flowers.jpg') center/cover no-repeat;
+            opacity: 0.08;
+            filter: blur(1px);
+        }
+        .menu-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        .menu-panel {
+            position: relative;
+            z-index: 1;
+            width: min(92vw, 420px);
+            min-height: 100vh;
+            background: #010461be;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: -18px 0 40px rgba(2, 6, 23, 0.25);
+            padding: 1.1rem 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: translateX(14px);
+            opacity: 0;
+            transition: transform .35s ease, opacity .35s ease;
+        }
+        .menu-overlay.is-open .menu-panel {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        .menu-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: #ff8400;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+        }
+        .menu-close {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 24px rgba(15, 23, 35, 0.26);
+            transition: transform .25s ease, background .25s ease;
+        }
+        .menu-close:hover,
+        .menu-close:focus-visible {
+            background: rgba(255,255,255,0.18);
+            transform: translateY(-1px);
+            outline: none;
+        }
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: .85rem;
+            font-size: 1.08rem;
+        }
+        .menu-list a {
+            color: #fff;
+            padding: .35rem 0;
+            transition: color .2s ease, transform .2s ease;
+        }
+        .menu-list a:hover,
+        .menu-list a:focus-visible {
+            color: #ffdca8;
+            transform: translateX(3px);
+            outline: none;
+        }
+        .menu-list .menu-donate-btn {
+            align-self: flex-start;
+            width: 90px;
+            margin-top: .1rem;
+            padding: .35rem .75rem;
+            font-size: .92rem;
+            border-radius: 999px;
+        }
+
+        #get-involved {
+            padding-top: 1rem !important;
+            padding-bottom: 2rem !important;
         }
 
         /* Footer */
@@ -145,11 +310,11 @@ body::before{
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.12;                 /* slightly more visible */
-  filter: blur(0.6px) saturate(1.05) grayscale(.08);
+  opacity: 0.22;
+  filter: blur(0.2px) saturate(1.15) grayscale(.02);
   pointer-events: none;
   user-select: none;
-  z-index: -1;                   /* behind all content */
+  z-index: -1;
 }
 
 /* keep hero content above the decorative background */
@@ -167,113 +332,103 @@ body::before{
             <a href="#" class="brand text-decoration-none">
             <span class="logo"></span>
             <span class="logo" aria-hidden="true">
-                <img src="vistaractual.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <img src="dontplaythefool.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
                 <span class="logo-fallback">V</span>
             </span>
                 <span class="--muted"style="letter-spacing:.2px;">Vistar Foundation</span>
             </a>
 
-            <nav class="d-none d-md-flex align-items-center gap-3">
-            <a class="muted text-decoration-none" href="#about">About</a>
-            <a class="muted text-decoration-none" href="#programs">Programs</a>
-            <a class="muted text-decoration-none" href="#get-involved">Get Involved</a>
-            <a class="muted text-decoration-none" href="#contact">Contact</a>
-            <a class="muted text-decoration-none" href="team.html">Team</a>
-            <a class="btn btn-primary ms-3" href="donate.html">Donate</a>
+            <button id="menuToggle" class="menu-fab" type="button" aria-label="Open main menu" aria-expanded="false" aria-controls="menuOverlay">
+            <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <aside id="menuOverlay" class="menu-overlay" aria-hidden="true">
+            <nav class="menu-panel" aria-label="Primary menu">
+            <div class="menu-header">
+                <span class="menu-label">Menu</span>
+                <button id="menuClose" class="menu-close" type="button" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="menu-list">
+                <a class="muted text-decoration-none" href="#about">About</a>
+                <a class="muted text-decoration-none" href="#get-involved">Programs</a>
+                <a class="muted text-decoration-none" href="#contact">Contact</a>
+                <a class="muted text-decoration-none" href="team.html">Team</a>
+                <a class="menu-donate-btn btn btn-primary btn-sm" href="donate.html">Donate</a>
+            </div>
             </nav>
-
-            <!-- small-screen menu button -->
-            <div class="d-md-none">
-            <button class="btn btn-ghost" id="mobileToggle"><i class="fa fa-bars"></i></button>
-            </div>
-        </div>
-
-        <!-- mobile menu -->
-        <div id="mobileMenu" class="d-md-none" style="display:none;">
-            <div class="container container-lg py-3 d-flex flex-column gap-2">
-            <a class="text-decoration-none muted" href="#about">About</a>
-            <a class="text-decoration-none muted" href="#programs">Programs</a>
-            <a class="text-decoration-none muted" href="#get-involved">Get Involved</a>
-            <a class="text-decoration-none muted" href="#contact">Volunteer</a>
-            <a class="muted text-decoration-none" href="team.html">Team</a>
-            <a class="btn btn-primary mt-2" href="#donate">Donate</a>
-            </div>
-        </div>
+        </aside>
         </header>
         <!-- HERO -->
         <main>
         <section class="hero">
           <!-- decorative, non-essential image (empty alt and aria-hidden) -->
           <img src="flowers.jpg" alt="" aria-hidden="true" class="hero-bg">
-          <div class="container">
-            <div class="row align-items-center gap-4">
-                <div class="col-lg-6" data-anim>
-                <h1 class="subtitle">The VISTAR Foundation.</h1>
-                <p class="subtitle">A small yet powerful NGO led by teenagers that aims to help find joy in the world for those who lack. Read more below!</p>
-                <div class="d-flex gap-2 mt-4">
-                    <a class="btn btn-primary btn-lg" href="#programs">What do we do?</a>
-                </div>
-                </div>
+          <div class="container container-lg">
+            <div class="row g-4 align-items-stretch hero-grid">
+                <article class="col-lg-7" data-anim>
                 <div>
-                    <p class="subtitle">explanation of what we do and other details</p>
+                    <h1 class="randomahh">The VISTAR Foundation.</h1>
+                    <p class="subtitle">A small yet impactful NGO led by teenagers that aims to help find joy in the world for those who lack. We bridge the gap between classroom learning and real-life confidence.</p>
+                    <div class="d-flex gap-2 hero-cta flex-wrap">
+                    <a class="btn btn-primary btn-lg" href="#programs">What do we do?</a>
+                    <a class="btn btn-primary btn-lg" href="#get-involved">Get involved</a>
+                    </div>
                 </div>
+                </article>
+
+                <aside class="col-lg-5" data-anim>
+                <div class="hero-highlight">
+                    <h2 class="h4 randomahh mb-2">Why this matters</h2>
+                    <p class="subtitle">The school system is nearly perfect. We come in to fill that gap by bringing practical lessons, emotional support, and encouragement to under-resourced schools.</p>
+                </div>
+                </aside>
             </div>
             </div>
         </section>
 
-        <!-- PROGRAMS -->
-        <section id="programs" class="py-5 programs">
-            <div class="container container-lg" data-anim>
-            <h3 class="randomahh">How do we do it?</h3>
-            <div class="row mt-4 g-3">
-                <div class="col-md-4" data-anim>
-                <div class="card-soft h-100">
-                    <h5>empty</h5>
-                    <p class="randomahh">empty</p>
-                    <a class="randomahh" href="#">Learn more →</a>
-                </div>
-                </div>
-
-                <div class="col-md-4" data-anim>
-                <div class="card-soft h-100">
-                    <h5>empty</h5>
-                    <p class="randomahh">empty</p>
-                    <a class="randomahh" href="#">Learn more →</a>
-                </div>
-                </div>
-
-                <div class="col-md-4" data-anim>
-                <div class="card-soft h-100">
-                    <h5>empty</h5>
-                    <p class="randomahh">empty</p>
-                    <a class="randomahh" href="#">Learn more →</a>
-                </div>
-                </div>
-            </div>
-            </div>
-        </section>
+        <!-- PROGRAMS -->   
 
         <!-- GET INVOLVED -->
         <section id="get-involved" class="py-5">
             <div class="container container-lg" data-anim>
-            <div class="row g-4 align-items-center">
-                <div class="col-md-7">
-                <h4 class="randomahh">Get involved</h4>
+            <div class="row g-4 align-items-start">
+                <div class="col-12 col-md-8 text-start">
+                <h4 class="randomahh">Programs</h4>
                 <p class="randomahh">Volunteer, partner or contribute — small actions add up to lasting change.</p>
                 <div class="d-flex gap-2 mt-3">
                     <a class="btn btn-primary" href="contact.html">Volunteer</a>
                     <a class="btn btn-primary" href="donate.html">Donate</a>
                 </div>
                 </div>
-                <div class="col-md-5">
-                <div class="card-soft">
-                    <strong>Newsletter</strong>
-                    <p class="randomahh" style="margin-bottom:.6rem">proofs maybe</p>
-                    <form class="d-flex gap-2">
-                    <input class="form-control form-control-sm" placeholder="you@example.org" aria-label="email">
-                    <button class="btn btn-primary btn-sm" type="button">Subscribe</button>
-                    </form>
-                </div>
+                <div class="col-12">
+                    <div class="row mt-4 g-3 justify-content-center">
+                        <div class="col-sm-6 col-lg-4" data-anim>
+                            <div class="card-soft h-100">
+                                <h5 class="randomahh">Workshop #1</h5>
+                                <p class="randomahh">To Be Decided</p>
+                                <a class="randomahh" href="workshop1.html">Learn more →</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-4" data-anim>
+                            <div class="card-soft h-100">
+                                <h5 class="randomahh">Workshop #2</h5>
+                                <p class="randomahh">To Be Decided</p>
+                                <a class="randomahh" href="workshop2.html">Learn more →</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-4" data-anim>
+                            <div class="card-soft h-100">
+                                <h5 class="randomahh">Workshop #3</h5>
+                                <p class="randomahh">To Be Decided</p>
+                                <a class="randomahh" href="workshop3.html">Learn more →</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>
@@ -318,11 +473,36 @@ body::before{
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script>
-        // mobile menu toggle
-        document.getElementById('mobileToggle')?.addEventListener('click', function(){
-            const menu = document.getElementById('mobileMenu');
-            if (!menu) return;
-            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuClose = document.getElementById('menuClose');
+
+        function setMenuState(isOpen) {
+            document.body.classList.toggle('menu-open', isOpen);
+            menuOverlay?.classList.toggle('is-open', isOpen);
+            menuOverlay?.setAttribute('aria-hidden', String(!isOpen));
+            menuToggle?.setAttribute('aria-expanded', String(isOpen));
+            if (isOpen) {
+            document.documentElement.style.overflow = 'hidden';
+            } else {
+            document.documentElement.style.overflow = '';
+            }
+        }
+
+        menuToggle?.addEventListener('click', function(){
+            setMenuState(true);
+        });
+
+        menuClose?.addEventListener('click', function(){
+            setMenuState(false);
+        });
+
+        menuOverlay?.addEventListener('click', function(event) {
+            if (event.target === menuOverlay) setMenuState(false);
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') setMenuState(false);
         });
 
         // update year
@@ -355,9 +535,7 @@ body::before{
             const navHeight = document.querySelector('header')?.offsetHeight || 0;
             const top = target.getBoundingClientRect().top + window.scrollY - Math.min(navHeight, 80);
             window.scrollTo({ top, behavior: 'smooth' });
-            // close mobile menu if open
-            const menu = document.getElementById('mobileMenu');
-            if (menu && menu.style.display === 'block') menu.style.display = 'none';
+            setMenuState(false);
             });
         });
         </script>
